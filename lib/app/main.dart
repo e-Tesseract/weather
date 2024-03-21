@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:weather/routes/home_route.dart';
 
+import '../common/WeatherTemperature.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -15,13 +17,9 @@ class MyApp extends StatelessWidget {
 
       title: 'Flutter Demo',
 
-      theme: ThemeData(
+      theme: ThemeData(),
 
-
-
-
-      ),
-      home: const MenuRoute(),
+      home: const MenuRoute()
 
     );
   }
