@@ -3,28 +3,40 @@ import 'package:weather/common/weatherText.dart';
 
 class MenuRoute extends StatelessWidget {
   const MenuRoute({Key? key}) : super(key: key);
-  final int heure = 16;
+  final int heure = 17;
   final int minute = 30;
 
   LinearGradient determineBackgroundColor() {
     final Color startColor;
+    Color midColor = Colors.blue;
     final Color endColor;
 
     if (heure < 12) {
-      startColor = Colors.blueAccent;
-      endColor = Colors.orangeAccent;
-    } else if (heure < 16) {
-      startColor = Colors.lightBlue;
-      endColor = Colors.blue;
+      startColor = Color(0xFF6DB8FF);
+      endColor = Color(0xFFFDE3BB);
+    } else if (heure < 18) {
+      startColor = Color(0xFF508EFF);
+      midColor = Color(0xFF173C6E);
+      endColor = Color(0xFFFFFABC);
     } else {
-      startColor = Colors.black;
-      endColor = Colors.blue;
+      startColor = Color(0xFF030C1E);
+      midColor = Color(0xFF173C6E);
+      endColor = Color(0xFFFFFABC);
+    }
+
+    List<Color> colors;
+    if (heure < 12) {
+      colors = [startColor, startColor, endColor, endColor, endColor];
+    } else if (heure < 18) {
+      colors = [startColor, endColor];
+    } else {
+      colors = [startColor, startColor, midColor, endColor];
     }
 
     return LinearGradient(
       begin: Alignment.topCenter,
       end: Alignment.bottomCenter,
-      colors: [startColor, endColor],
+      colors: colors,
     );
   }
 
@@ -56,6 +68,7 @@ class MenuRoute extends StatelessWidget {
       ),
       body: Stack(
         children: [
+          const WeatherText(),
           Container(
               decoration: BoxDecoration(
                 gradient: determineBackgroundColor(),
