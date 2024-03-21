@@ -51,7 +51,7 @@ class WeatherText extends StatelessWidget {
                     child: Text(
                       '${snapshot.data?['temperature']}°', // Display rounded temperature
                       style: const TextStyle(
-                        fontFamily: 'Inter',
+                        fontFamily: 'ExtraBold',
                         fontSize: 100,
                         color: Colors.white,
                       ),
