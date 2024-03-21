@@ -31,6 +31,29 @@ class MenuRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar : AppBar(
+        backgroundColor: Colors.black,
+        elevation: 0,
+        title: Row(
+          children: <Widget>[
+            const Spacer(), // Utilisation de Spacer pour l'espace entre les 2 boutons
+            IconButton(
+              icon: const Icon(Icons.cloud, color: Colors.white),
+              onPressed: () {
+
+              },
+            ),
+            const Spacer(flex: 1,),
+            IconButton(
+              icon: const Icon(Icons.location_city, color: Colors.white),
+              onPressed: () {
+
+              },
+            ),
+            const Spacer(),
+          ],
+        ),
+      ),
       body: Stack(
         children: [
           Container(
@@ -53,7 +76,6 @@ class MenuRoute extends StatelessWidget {
                 child: Image.asset(
                   'assets/montagne2.jpg',
                   fit: BoxFit.fitHeight,
-
                 ),
               ),
             ),
@@ -67,7 +89,6 @@ class MenuRoute extends StatelessWidget {
                 child: Image.asset(
                   'assets/montagne2.jpg',
                   fit: BoxFit.fitHeight,
-
                 ),
               ),
             ),
@@ -81,13 +102,10 @@ class MenuRoute extends StatelessWidget {
                 child: Image.asset(
                   'assets/foretnuit.png',
                   fit: BoxFit.fitHeight,
-
                 ),
               ),
             ),
-
         ],
-
       ),
     );
   }
