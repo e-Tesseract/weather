@@ -32,7 +32,7 @@ class MenuRoute extends StatelessWidget {
               height: 800.0, // Définir la hauteur
               width: MediaQuery.of(context).size.width * 1, // Définir la largeur
               child: Image.asset(
-                'assets/montagne.jpg',
+                'assets/montagne2.jpg',
                 fit: BoxFit.fitHeight,
 
               ),
@@ -45,7 +45,7 @@ class MenuRoute extends StatelessWidget {
               height: 600.0, // Définir la hauteur
               width: MediaQuery.of(context).size.width * 1, // Définir la largeur
               child: Image.asset(
-                'assets/montagne.jpg',
+                'assets/montagne2.jpg',
                 fit: BoxFit.fitHeight,
 
               ),
