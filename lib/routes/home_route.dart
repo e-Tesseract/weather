@@ -38,6 +38,20 @@ class MenuRoute extends StatelessWidget {
               ),
             ),
           ),
+          Positioned(
+            bottom: -200,
+            left: MediaQuery.of(context).size.width / 800,
+            child: SizedBox(
+              height: 600.0, // Définir la hauteur
+              width: MediaQuery.of(context).size.width * 1, // Définir la largeur
+              child: Image.asset(
+                'assets/montagne.jpg',
+                fit: BoxFit.fitHeight,
+
+              ),
+            ),
+          ),
+
         ],
 
       ),
