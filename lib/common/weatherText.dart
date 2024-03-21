@@ -53,6 +53,8 @@ class WeatherText extends StatelessWidget {
                       style: const TextStyle(
                         fontFamily: 'Inter',
                         fontSize: 100,
+                        /* mettre en extra bold */
+                        fontWeight: FontWeight.w900,
                         color: Colors.white,
                       ),
                     ),
