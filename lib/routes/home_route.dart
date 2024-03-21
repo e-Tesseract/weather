@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class MenuRoute extends StatelessWidget {
   const MenuRoute({Key? key}) : super(key: key);
-  final int heure = 19;
+  final int heure = 18;
   final int minute = 30;
 
   Color determineBackgroundColor() {
