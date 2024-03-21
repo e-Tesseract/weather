@@ -12,8 +12,8 @@ class MenuRoute extends StatelessWidget {
 
     if (heure < 12) {
       startColor = Colors.blueAccent;
-      endColor = Colors.yellow;
-    } else if (heure < 16) {
+      endColor = Colors.orangeAccent;
+    } else if (heure < 18) {
       startColor = Colors.lightBlue;
       endColor = Colors.blue;
     } else {
@@ -44,7 +44,7 @@ class MenuRoute extends StatelessWidget {
               bottom: -200,
               left: MediaQuery.of(context).size.width / 800,
               child: SizedBox(
-                height: 800.0, // Définir la hauteur
+                height: 820.0, // Définir la hauteur
                 width: MediaQuery.of(context).size.width * 1, // Définir la largeur
                 child: Image.asset(
                   'assets/montagne2.jpg',
@@ -58,24 +58,10 @@ class MenuRoute extends StatelessWidget {
               bottom: -200,
               left: MediaQuery.of(context).size.width / 800,
               child: SizedBox(
-                height: 600.0, // Définir la hauteur
+                height: 620.0, // Définir la hauteur
                 width: MediaQuery.of(context).size.width * 1, // Définir la largeur
                 child: Image.asset(
                   'assets/montagne2.jpg',
-                  fit: BoxFit.fitHeight,
-
-                ),
-              ),
-            ),
-          if (heure >= 16)
-            Positioned(
-              bottom: -200,
-              left: MediaQuery.of(context).size.width / 800,
-              child: SizedBox(
-                height: 800.0, // Définir la hauteur
-                width: MediaQuery.of(context).size.width * 1, // Définir la largeur
-                child: Image.asset(
-                  'assets/foretnuit.png',
                   fit: BoxFit.fitHeight,
 
                 ),
