@@ -3,7 +3,7 @@ import 'package:weather/common/WeatherTemperature.dart';
 
 class MenuRoute extends StatelessWidget {
   const MenuRoute({Key? key}) : super(key: key);
-  final int heure = 18;
+  final int heure = 11;
   final int minute = 30;
 
   LinearGradient determineBackgroundColor() {
@@ -11,8 +11,8 @@ class MenuRoute extends StatelessWidget {
     final Color endColor;
 
     if (heure < 12) {
-      startColor = Colors.lime;
-      endColor = Colors.lightBlue;
+      startColor = Colors.blueAccent;
+      endColor = Colors.yellow;
     } else if (heure < 18) {
       startColor = Colors.lightBlue;
       endColor = Colors.blue;
