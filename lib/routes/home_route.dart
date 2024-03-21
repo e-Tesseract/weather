@@ -3,7 +3,7 @@ import 'package:weather/common/weatherText.dart';
 
 class MenuRoute extends StatelessWidget {
   const MenuRoute({Key? key}) : super(key: key);
-  final int heure = 14;
+  final int heure = 11;
   final int minute = 30;
 
   LinearGradient determineBackgroundColor() {
@@ -12,7 +12,7 @@ class MenuRoute extends StatelessWidget {
 
     if (heure < 12) {
       startColor = Colors.blueAccent;
-      endColor = Colors.yellow;
+      endColor = Colors.orangeAccent;
     } else if (heure < 18) {
       startColor = Colors.lightBlue;
       endColor = Colors.blue;
@@ -44,7 +44,7 @@ class MenuRoute extends StatelessWidget {
               bottom: -200,
               left: MediaQuery.of(context).size.width / 800,
               child: SizedBox(
-                height: 850.0, // Définir la hauteur
+                height: 820.0, // Définir la hauteur
                 width: MediaQuery.of(context).size.width * 1, // Définir la largeur
                 child: Image.asset(
                   'assets/montagne2.jpg',
@@ -58,7 +58,7 @@ class MenuRoute extends StatelessWidget {
               bottom: -200,
               left: MediaQuery.of(context).size.width / 800,
               child: SizedBox(
-                height: 650.0, // Définir la hauteur
+                height: 620.0, // Définir la hauteur
                 width: MediaQuery.of(context).size.width * 1, // Définir la largeur
                 child: Image.asset(
                   'assets/montagne2.jpg',
