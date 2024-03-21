@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weather/common/WeatherTemperature.dart';
+import 'package:weather/common/weatherText.dart';
 
 class MenuRoute extends StatelessWidget {
   const MenuRoute({Key? key}) : super(key: key);
