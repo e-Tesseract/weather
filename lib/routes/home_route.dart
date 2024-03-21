@@ -1,32 +1,46 @@
 import 'package:flutter/material.dart';
-
-import '../common/WeatherTemperature.dart';
+import 'package:weather/common/WeatherTemperature.dart';
 
 class MenuRoute extends StatelessWidget {
   const MenuRoute({Key? key}) : super(key: key);
   final int heure = 18;
   final int minute = 30;
 
-  Color determineBackgroundColor() {
-    if (heure < 19) {
-      return Colors.blue;
+  LinearGradient determineBackgroundColor() {
+    final Color startColor;
+    final Color endColor;
+
+    if (heure < 12) {
+      startColor = Colors.lime;
+      endColor = Colors.lightBlue;
+    } else if (heure < 18) {
+      startColor = Colors.lightBlue;
+      endColor = Colors.blue;
     } else {
-      return Colors.white10;
+      startColor = Colors.black;
+      endColor = Colors.blue;
     }
+
+    return LinearGradient(
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter,
+      colors: [startColor, endColor],
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: determineBackgroundColor(),
       body: Stack(
         children: [
           const WeatherText(),
           Container(
-            // COntenu de la page
+              decoration: BoxDecoration(
+                gradient: determineBackgroundColor(),
+              )
           ),
           Positioned(
-           bottom: -200,
+            bottom: -200,
             left: MediaQuery.of(context).size.width / 800,
             child: SizedBox(
               height: 800.0, // Définir la hauteur
@@ -51,7 +65,6 @@ class MenuRoute extends StatelessWidget {
               ),
             ),
           ),
-
         ],
 
       ),
