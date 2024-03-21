@@ -3,7 +3,7 @@ import 'package:weather/common/weatherText.dart';
 
 class MenuRoute extends StatelessWidget {
   const MenuRoute({Key? key}) : super(key: key);
-  final int heure = 18;
+  final int heure = 16;
   final int minute = 30;
 
   LinearGradient determineBackgroundColor() {
@@ -13,7 +13,7 @@ class MenuRoute extends StatelessWidget {
     if (heure < 12) {
       startColor = Colors.blueAccent;
       endColor = Colors.orangeAccent;
-    } else if (heure < 18) {
+    } else if (heure < 16) {
       startColor = Colors.lightBlue;
       endColor = Colors.blue;
     } else {
@@ -33,11 +33,15 @@ class MenuRoute extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          const WeatherText(),
           Container(
               decoration: BoxDecoration(
                 gradient: determineBackgroundColor(),
               )
+          ),
+          const Positioned.fill(
+            child: Center(
+              child: WeatherText(),
+            ),
           ),
           if (heure < 16)
             Positioned(
