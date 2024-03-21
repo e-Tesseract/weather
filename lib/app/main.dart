@@ -17,7 +17,11 @@ class MyApp extends StatelessWidget {
 
       title: 'Flutter Demo',
 
-      theme: ThemeData(),
+      theme: ThemeData(
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          backgroundColor: Colors.transparent
+        )
+      ),
 
       home: const MenuRoute()
 
