@@ -3,7 +3,7 @@ import 'package:weather/common/weatherMain.dart';
 
 class MenuRoute extends StatelessWidget {
   const MenuRoute({Key? key}) : super(key: key);
-  final int heure = 18;
+  final int heure = 16;
   final int minute = 30;
 
 
@@ -13,12 +13,12 @@ class MenuRoute extends StatelessWidget {
     final Color endColor;
 
     if (heure < 12) {
-      startColor = Color(0xFF6DB8FF);
-      endColor = Color(0xFFFDE3BB);
-    } else if (heure < 18) {
       startColor = Color(0xFF508EFF);
       midColor = Color(0xFF173C6E);
       endColor = Color(0xFFFFFABC);
+    } else if (heure < 18) {
+      startColor = Color(0xFF57CEF3);
+      endColor = Color(0xFF99D1E3);
     } else {
       startColor = Color(0xFF030C1E);
       midColor = Color(0xFF173C6E);
@@ -27,9 +27,9 @@ class MenuRoute extends StatelessWidget {
 
     List<Color> colors;
     if (heure < 12) {
-      colors = [startColor, startColor, endColor, endColor, endColor];
-    } else if (heure < 18) {
       colors = [startColor, endColor];
+    } else if (heure < 18) {
+      colors = [startColor, startColor, endColor, endColor, endColor];
     } else {
       colors = [startColor, startColor, midColor, endColor];
     }
@@ -44,43 +44,43 @@ class MenuRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar : AppBar(
-        backgroundColor: Colors.black,
-        elevation: 0,
-        title: Row(
-          children: <Widget>[
-            const Spacer(), // Utilisation de Spacer pour l'espace entre les 2 boutons
-            IconButton(
-              icon: const Icon(Icons.cloud, color: Colors.white),
-              onPressed: () {
-
-              },
-            ),
-            const Spacer(flex: 1,),
-            IconButton(
-              icon: const Icon(Icons.location_city, color: Colors.white),
-              onPressed: () {
-
-              },
-            ),
-            const Spacer(),
-          ],
-        ),
-      ),
       body: Stack(
         children: [
-          const WeatherText(),
           Container(
-              decoration: BoxDecoration(
-                gradient: determineBackgroundColor(),
-              )
+            decoration: BoxDecoration(
+              gradient: determineBackgroundColor(),
+            ),
           ),
+          const WeatherText(),
           const Positioned.fill(
             child: Center(
               child: WeatherText(),
             ),
           ),
-
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            child: AppBar(
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              title: Row(
+                children: <Widget>[
+                  const Spacer(), // Utilisation de Spacer pour l'espace entre les 2 boutons
+                  IconButton(
+                    icon: const Icon(Icons.add, color: Colors.white, size: 35.0),
+                    onPressed: () {},
+                  ),
+                  const Spacer(flex: 100,),
+                  IconButton(
+                    icon: const Icon(Icons.more_vert, color: Colors.white, size: 35,),
+                    onPressed: () {},
+                  ),
+                  const Spacer(),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );
