@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weather/common/weatherMain.dart';
+import 'package:weather/menu/villes_route.dart';
 
 class MenuRoute extends StatelessWidget {
   const MenuRoute({Key? key}) : super(key: key);
@@ -17,8 +18,8 @@ class MenuRoute extends StatelessWidget {
       midColor = Color(0xFF173C6E);
       endColor = Color(0xFFFFFABC);
     } else if (heure < 18) {
-      startColor = Color(0xFF57CEF3);
-      endColor = Color(0xFF99D1E3);
+      startColor = Color(0xFF57ADF3);
+      endColor = Color(0xFF99C9E3);
     } else {
       startColor = Color(0xFF030C1E);
       midColor = Color(0xFF173C6E);
@@ -69,7 +70,13 @@ class MenuRoute extends StatelessWidget {
                   const Spacer(), // Utilisation de Spacer pour l'espace entre les 2 boutons
                   IconButton(
                     icon: const Icon(Icons.add, color: Colors.white, size: 35.0),
-                    onPressed: () {},
+                    onPressed: () {
+                      // Aller à villes_route.dart
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => VillesRoute()),
+                      );
+                    },
                   ),
                   const Spacer(flex: 100,),
                   IconButton(
