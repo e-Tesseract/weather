@@ -14,8 +14,8 @@ class WeatherText extends StatelessWidget {
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
       final temperatureKelvin = data['main']['temp'];
-      final temperatureCelsius = temperatureKelvin.round(); // Round to nearest whole number
-      return {'city': city, 'temperature': temperatureCelsius}; // Return city and temperature
+      final temperatureCelsius = temperatureKelvin.round();
+      return {'city': city, 'temperature': temperatureCelsius};
     } else {
       throw Exception('Failed to load weather data');
     }
@@ -26,7 +26,7 @@ class WeatherText extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.5), // Increase bottom padding
       child: Align(
-        alignment: Alignment.topCenter, // Align to the top of the screen
+        alignment: Alignment.topCenter,
         child: FutureBuilder<Map<String, dynamic>>(
           future: getWeatherData(),
           builder: (BuildContext context, AsyncSnapshot<Map<String, dynamic>> snapshot) {
@@ -39,7 +39,7 @@ class WeatherText extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    '${snapshot.data?['city']}'.toUpperCase(), // Convert city to uppercase
+                    '${snapshot.data?['city']}'.toUpperCase(),
                     style: const TextStyle(
                       fontFamily: 'Regular',
                       fontSize: 40,
@@ -47,13 +47,13 @@ class WeatherText extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 25.0), // Add left padding
+                    padding: EdgeInsets.only(left: 25.0),
                     child: Text(
-                      '${snapshot.data?['temperature']}°', // Display rounded temperature
+                      '${snapshot.data?['temperature']}°',
                       style: const TextStyle(
                         fontFamily: 'Inter',
                         fontSize: 100,
-                        /* mettre en extra bold */
+
                         fontWeight: FontWeight.w900,
                         color: Colors.white,
                       ),
