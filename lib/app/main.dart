@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:weather/routes/home_route.dart';
 
-import '../common/weatherText.dart';
+import '../common/weatherMain.dart';
 
 void main() {
   runApp(const MyApp());
