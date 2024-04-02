@@ -22,7 +22,8 @@ class WeatherService {
       final data = jsonDecode(response.body);
       final temperatureKelvin = data['main']['temp'];
       final temperatureCelsius = temperatureKelvin.round();
-      return {'city': city, 'temperature': temperatureCelsius};
+      final weatherDescription = data['weather'][0]['description'];
+      return {'city': city, 'temperature': temperatureCelsius, 'weatherDescription': weatherDescription};
     } else {
       throw Exception('Failed to load weather data');
     }
