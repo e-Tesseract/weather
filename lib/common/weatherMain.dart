@@ -1,19 +1,18 @@
-// weather_text.dart
+// weatherText.dart
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../styles/weather_text.dart';
 import 'weather_service.dart';
 
-
-class WeatherText extends StatelessWidget {
-  const WeatherText({Key? key}) : super(key: key);
+class WeatherMain extends StatelessWidget {
+  const WeatherMain({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final weatherService = WeatherService();
 
     return Padding(
-      padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.5), // Increase bottom padding
+      padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.5),
       child: Align(
         alignment: Alignment.topCenter,
         child: FutureBuilder<Map<String, dynamic>>(

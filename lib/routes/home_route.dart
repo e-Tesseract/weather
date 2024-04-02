@@ -54,7 +54,7 @@ class MenuRoute extends StatelessWidget {
           ),
           const Positioned.fill(
             child: Center(
-              child: WeatherText(),
+              child: WeatherMain(),
             ),
           ),
           Positioned(
