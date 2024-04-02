@@ -9,8 +9,9 @@ class VillesRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
-        title: const Text('Page de Test'),
+        title: const Text('Gérer les villes'),
       ),
       body: const Center(
         child: Text('Ceci est une page de test'),
