@@ -52,7 +52,7 @@ class MenuRoute extends StatelessWidget {
               gradient: determineBackgroundColor(),
             ),
           ),
-          const WeatherText(),
+          const WeatherMain(),
           const Positioned.fill(
             child: Center(
               child: WeatherMain(),
