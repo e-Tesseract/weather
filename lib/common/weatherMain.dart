@@ -3,19 +3,20 @@ import 'package:flutter/material.dart';
 import '../styles/weather_text.dart';
 import 'weather_service.dart';
 
+
 class WeatherMain extends StatelessWidget {
-  const WeatherMain({Key? key}) : super(key: key);
+  const WeatherMain({Key? key, this.weatherUpdatedAt}) : super(key: key);
+
+  final DateTime? weatherUpdatedAt;
 
   @override
   Widget build(BuildContext context) {
-    final weatherService = WeatherService();
-
     return Padding(
       padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.3),
       child: Align(
         alignment: Alignment.topCenter,
         child: FutureBuilder<Map<String, dynamic>>(
-          future: weatherService.getWeatherData(),
+          future: WeatherService.getWeatherData(),
           builder: (BuildContext context, AsyncSnapshot<Map<String, dynamic>> snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const CircularProgressIndicator();

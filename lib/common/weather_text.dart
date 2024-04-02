@@ -8,14 +8,13 @@ class WeatherText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final weatherService = WeatherService();
 
     return Padding(
       padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.5), // Increase bottom padding
       child: Align(
         alignment: Alignment.topCenter,
         child: FutureBuilder<Map<String, dynamic>>(
-          future: weatherService.getWeatherData(),
+          future: WeatherService.getWeatherData(),
           builder: (BuildContext context, AsyncSnapshot<Map<String, dynamic>> snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const CircularProgressIndicator();
