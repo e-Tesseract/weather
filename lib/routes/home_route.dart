@@ -6,6 +6,7 @@ class MenuRoute extends StatelessWidget {
   final int heure = 18;
   final int minute = 30;
 
+
   LinearGradient determineBackgroundColor() {
     final Color startColor;
     Color midColor = Colors.blue;
@@ -79,45 +80,7 @@ class MenuRoute extends StatelessWidget {
               child: WeatherText(),
             ),
           ),
-          if (heure < 16)
-            Positioned(
-              bottom: -200,
-              left: MediaQuery.of(context).size.width / 800,
-              child: SizedBox(
-                height: 820.0, // Définir la hauteur
-                width: MediaQuery.of(context).size.width * 1, // Définir la largeur
-                child: Image.asset(
-                  'assets/montagne2.jpg',
-                  fit: BoxFit.fitHeight,
-                ),
-              ),
-            ),
-          if (heure < 16)
-            Positioned(
-              bottom: -200,
-              left: MediaQuery.of(context).size.width / 800,
-              child: SizedBox(
-                height: 620.0, // Définir la hauteur
-                width: MediaQuery.of(context).size.width * 1, // Définir la largeur
-                child: Image.asset(
-                  'assets/montagne2.jpg',
-                  fit: BoxFit.fitHeight,
-                ),
-              ),
-            ),
-          if (heure >= 16)
-            Positioned(
-              bottom: -200,
-              left: MediaQuery.of(context).size.width / 800,
-              child: SizedBox(
-                height: 825.0, // Définir la hauteur
-                width: MediaQuery.of(context).size.width * 1, // Définir la largeur
-                child: Image.asset(
-                  'assets/foretnuit.png',
-                  fit: BoxFit.fitHeight,
-                ),
-              ),
-            ),
+
         ],
       ),
     );
