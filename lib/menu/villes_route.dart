@@ -35,7 +35,6 @@ class VillesRoute extends StatelessWidget {
                     onPrimary: Colors.white70,
                   ),
                   onPressed: () {
-                    // TODO Modifier la ville par defaut dans les preferences partagées
                     SharedPreferences.getInstance().then((sp) {
                       sp.setString('default_city', villes[index]);
                       Navigator.pop(context);
