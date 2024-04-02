@@ -36,7 +36,15 @@ class WeatherMain extends StatelessWidget {
                       '${snapshot.data?['temperature']}°',
                       style: temperatureTextStyle,
                     ),
-                  )
+                  ),
+                  Text(
+                    '${snapshot.data?['weatherDescription']}',
+                    style: const TextStyle(
+                      fontFamily: 'Regular',
+                      fontSize: 20,
+                      color: Colors.white,
+                    ),
+                  ),
                 ],
               );
             }
