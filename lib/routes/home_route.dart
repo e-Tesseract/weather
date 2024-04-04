@@ -5,9 +5,6 @@ import 'package:weather/menu/villes_route.dart';
 import 'package:weather/menu/parametres_route.dart';
 import 'package:weather/common/weather_service.dart';
 
-
-
-
 class HomeRoute extends StatefulWidget {
   const HomeRoute({Key? key}) : super(key: key);
 

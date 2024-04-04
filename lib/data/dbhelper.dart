@@ -41,4 +41,7 @@ class DBHelper {
       'DELETE FROM $tableName WHERE id = ?', [id],
     );
   }
+  static Future<int> insertVille(final VilleDTO w) async {
+    return await _db!.insert(tableName, w.toMap());
+  }
 }

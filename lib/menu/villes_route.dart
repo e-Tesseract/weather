@@ -68,7 +68,10 @@ class _VillesRouteState extends State<VillesRoute> {
                     child: Icon(Icons.delete, color: Colors.white),
                   ),
                   onDismissed: (direction) async {
-                    await DBHelper.delete(villes[index].id);
+
+                    if(villes[index].id == null) return;
+
+                    await DBHelper.delete(villes[index].id!);
                     setState(() {
                       villes.removeAt(index);
                     });

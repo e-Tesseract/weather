@@ -1,8 +1,8 @@
 class VilleDTO {
-  final int id;
+  final int? id;
   final String name;
 
-  VilleDTO({required this.id, required this.name});
+  VilleDTO({this.id, required this.name});
 
   // Convertir un Map en VilleDTO
   factory VilleDTO.fromMap(Map<String, dynamic> json) => new VilleDTO(

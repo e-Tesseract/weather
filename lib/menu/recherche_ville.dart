@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:csv/csv.dart';
 import 'package:flutter/services.dart';
+import '../data/dbhelper.dart';
+import '../data/ville_dto.dart';
 
 class RechercheVilleRoute extends StatefulWidget {
-  RechercheVilleRoute({Key? key}) : super(key: key);
+  const RechercheVilleRoute({Key? key}) : super(key: key);
 
   @override
   State<RechercheVilleRoute> createState() => _RechercheVilleRouteState();
@@ -21,12 +23,10 @@ class _RechercheVilleRouteState extends State<RechercheVilleRoute> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         iconTheme: const IconThemeData(color: Colors.white70, size: 35),
-        title: const Text('Gérer les villes',
-            style: TextStyle(color: Colors.white70)),
+        title: const Text('Gérer les villes', style: TextStyle(color: Colors.white70)),
       ),
       body: Column(
         children: [
-
           TextField(
             style: TextStyle(color: Colors.white),
             decoration: InputDecoration(
@@ -40,10 +40,8 @@ class _RechercheVilleRouteState extends State<RechercheVilleRoute> {
             ),
             onChanged: (text) async {
               if (text.length >= 3) {
-                final csvString =
-                    await rootBundle.loadString('assets/villes.csv');
-                List<List<dynamic>> csvData =
-                    CsvToListConverter().convert(csvString);
+                final csvString = await rootBundle.loadString('assets/villes.csv');
+                List<List<dynamic>> csvData = CsvToListConverter().convert(csvString);
 
                 var results = csvData.where((row) {
                   return row[1].toString().toLowerCase().startsWith(text.toLowerCase());
@@ -53,8 +51,7 @@ class _RechercheVilleRouteState extends State<RechercheVilleRoute> {
                   return {'city': c, 'population': population};
                 }).toList();
 
-                results.sort((a, b) =>
-                    (b['population'] as num).compareTo(a['population'] as num));
+                results.sort((a, b) => (b['population'] as num).compareTo(a['population'] as num));
 
                 setState(() {
                   filteredCities = results;
@@ -67,8 +64,7 @@ class _RechercheVilleRouteState extends State<RechercheVilleRoute> {
               itemCount: filteredCities.length,
               itemBuilder: (context, index) {
                 var result = filteredCities[index];
-                (String, String, String) cityInfo =
-                    result['city'] as (String, String, String);
+                (String, String, String) cityInfo = result['city'] as (String, String, String);
                 var cityName = cityInfo.$1;
                 var country = cityInfo.$2;
                 var admin = cityInfo.$3;
@@ -92,8 +88,10 @@ class _RechercheVilleRouteState extends State<RechercheVilleRoute> {
                       ),
                       IconButton(
                         icon: Icon(Icons.add),
-                         color: Colors.white,
-                        onPressed: () {},
+                        color: Colors.white,
+                        onPressed: () {
+                          _addCityToDatabase(cityName);
+                        },
                       ),
                     ],
                   ),
@@ -105,4 +103,13 @@ class _RechercheVilleRouteState extends State<RechercheVilleRoute> {
       ),
     );
   }
+
+  // Fonction pour ajouter la ville à la base de données
+  // Dans la méthode _addCityToDatabase, modifiez l'appel de la méthode insert pour récupérer l'ID de la ville insérée
+  void _addCityToDatabase(String cityName) async {
+    DBHelper dbHelper = DBHelper();
+    int id = await DBHelper.insertVille(VilleDTO(name: cityName, id: null));
+    VilleDTO ville = VilleDTO(id: id, name: cityName);
+  }
+
 }
