@@ -36,7 +36,9 @@ class DBHelper {
     }
   }
 
-  static delete(int id) {
-    _db!.delete(tableName, where: 'id = ?', whereArgs: [id]);
+  static Future<void> delete(int id) async {
+    await _db!.execute(
+      'DELETE FROM $tableName WHERE id = ?', [id],
+    );
   }
 }

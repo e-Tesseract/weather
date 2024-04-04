@@ -17,9 +17,6 @@ class _VillesRouteState extends State<VillesRoute> {
   @override
   void initState() {
     super.initState();
-    DBHelper.insert(VilleDTO(id: 3, name: 'Lens'));
-    DBHelper.insert(VilleDTO(id: 4, name: 'Dunkerque'));
-    DBHelper.insert(VilleDTO(id: 5, name: 'Calais'));
     fetchVilles();
   }
 
