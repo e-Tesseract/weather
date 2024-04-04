@@ -20,7 +20,7 @@ class RechercheVilleRoute extends StatelessWidget {
             elevation: 0,
             // Changer la couleur de l'icon
             iconTheme: const IconThemeData(color: Colors.white70, size: 35),
-            title: const Text('Paramètres', style: TextStyle(color: Colors.white70)),
+            title: const Text('Recherche de villes', style: TextStyle(color: Colors.white70)),
           ),
         ],
       ),

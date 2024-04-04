@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:weather/common/weatherMain.dart';
 import 'package:weather/routes/home_route.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:weather/menu/recherche_ville.dart';
 
 import '../common/weather_service.dart';
 
@@ -24,6 +25,15 @@ class VillesRoute extends StatelessWidget {
             elevation: 0,
             iconTheme: const IconThemeData(color: Colors.white70, size: 35),
             title: const Text('Gérer les villes', style: TextStyle(color: Colors.white70)),
+          ),
+          IconButton(
+            icon: const Icon(Icons.search),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => RechercheVilleRoute()),
+              );
+            },
           ),
           Expanded(
               child: ListView.builder(
