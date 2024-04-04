@@ -26,9 +26,18 @@ class VillesRoute extends StatelessWidget {
             iconTheme: const IconThemeData(color: Colors.white70, size: 35),
             title: const Text('Gérer les villes', style: TextStyle(color: Colors.white70)),
           ),
-          IconButton(
-            icon: const Icon(Icons.search),
-            onPressed: () {
+          TextField(
+            readOnly: true,
+            decoration: InputDecoration(
+              hintText: 'Ajouter des villes...',
+              // Couleur du texte
+              hintStyle: TextStyle(color: Colors.grey.withOpacity(0.5)),
+              prefixIcon: Icon(Icons.search),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+            ),
+            onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => RechercheVilleRoute()),

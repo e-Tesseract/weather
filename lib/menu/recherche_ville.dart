@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:weather/common/weatherMain.dart';
 
 
+import 'package:flutter/material.dart';
+import 'package:weather/common/weatherMain.dart';
 
 class RechercheVilleRoute extends StatelessWidget {
   RechercheVilleRoute({Key? key}) : super(key: key);
@@ -10,17 +12,28 @@ class RechercheVilleRoute extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: Stack(
+      body: Column(
         children: [
-          Center(
-            child: Text('Ceci est une page de test recherche', style: TextStyle(color: Colors.white70)),
-          ),
           AppBar(
             backgroundColor: Colors.transparent,
             elevation: 0,
-            // Changer la couleur de l'icon
             iconTheme: const IconThemeData(color: Colors.white70, size: 35),
-            title: const Text('Recherche de villes', style: TextStyle(color: Colors.white70)),
+            title: const Text('Gérer les villes', style: TextStyle(color: Colors.white70)),
+          ),
+          TextField(
+            decoration: InputDecoration(
+              hintText: 'Recherche...',
+              hintStyle: TextStyle(color: Colors.grey.withOpacity(0.5)),
+              prefixIcon: Icon(Icons.search),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+            ),
+            onChanged: (text) {
+              if (text.length >= 3) {
+                // L'utilisateur a saisi au moins 3 lettres, vous pouvez déclencher une action ici
+              }
+            },
           ),
         ],
       ),
