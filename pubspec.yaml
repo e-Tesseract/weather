@@ -30,6 +30,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  sqflite: any
+  path_provider: any
   http: ^0.13.3
 
 
@@ -65,6 +67,8 @@ flutter:
      - assets/montagne.jpg
      - assets/montagne2.jpg
      - assets/foretnuit.png
+     -
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

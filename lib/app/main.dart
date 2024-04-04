@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:weather/routes/home_route.dart';
 
+import '../menu/DBHelper.dart';
+
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  DBHelper.initDb();
+
+
   runApp(const MyApp());
 }
 
