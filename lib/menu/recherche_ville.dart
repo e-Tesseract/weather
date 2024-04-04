@@ -46,7 +46,7 @@ class _RechercheVilleRouteState extends State<RechercheVilleRoute> {
                     CsvToListConverter().convert(csvString);
 
                 var results = csvData.where((row) {
-                  return row[1].toString().startsWith(text);
+                  return row[1].toString().toLowerCase().startsWith(text.toLowerCase());
                 }).map((row) {
                   int population = int.tryParse(row[9].toString()) ?? 0;
                   (String, String, String) c = (row[1], row[4], row[7]);
