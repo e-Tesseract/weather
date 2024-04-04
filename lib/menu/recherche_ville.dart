@@ -28,7 +28,9 @@ class _RechercheVilleRouteState extends State<RechercheVilleRoute> {
         children: [
 
           TextField(
+            style: TextStyle(color: Colors.white),
             decoration: InputDecoration(
+              fillColor: Colors.white,
               hintText: 'Recherche...',
               hintStyle: TextStyle(color: Colors.grey.withOpacity(0.5)),
               prefixIcon: Icon(Icons.search),
@@ -53,7 +55,6 @@ class _RechercheVilleRouteState extends State<RechercheVilleRoute> {
 
                 results.sort((a, b) =>
                     (b['population'] as num).compareTo(a['population'] as num));
-                print(results.map((result) => result['city']).toList());
 
                 setState(() {
                   filteredCities = results;
@@ -76,14 +77,23 @@ class _RechercheVilleRouteState extends State<RechercheVilleRoute> {
                   title: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      Text(cityName, style: TextStyle(color: Colors.white)),
-                      Text(country, style: TextStyle(color: Colors.white70)),
-                      Text(admin, style: TextStyle(color: Colors.white70)),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(cityName, style: TextStyle(color: Colors.white)),
+                          Row(
+                            children: <Widget>[
+                              Text(country, style: TextStyle(color: Colors.white70)),
+                              Text(', ', style: TextStyle(color: Colors.white70)),
+                              Text(admin, style: TextStyle(color: Colors.white70)),
+                            ],
+                          ),
+                        ],
+                      ),
                       IconButton(
                         icon: Icon(Icons.add),
-                        onPressed: () {
-
-                        },
+                         color: Colors.white,
+                        onPressed: () {},
                       ),
                     ],
                   ),
