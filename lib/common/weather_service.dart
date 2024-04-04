@@ -16,7 +16,7 @@ class WeatherService {
     String city = sp.getString('default_city') ?? 'Calais';
 
     const apiKey = '0f3f2a3eb43bf03802c81919d20927b1';
-    final response = await http.get(Uri.parse('http://api.openweathermap.org/data/2.5/weather?q=$city&appid=$apiKey&units=metric'));
+    final response = await http.get(Uri.parse('http://api.openweathermap.org/data/2.5/weather?q=$city&appid=$apiKey&units=metric&lang=fr'));
 
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
