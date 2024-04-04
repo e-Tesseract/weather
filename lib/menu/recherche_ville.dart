@@ -64,7 +64,7 @@ class _RechercheVilleRouteState extends State<RechercheVilleRoute> {
           ),
           Expanded(
             child: ListView.builder(
-              itemCount: filteredCities.length,
+              itemCount: filteredCities.take(10).length,
               itemBuilder: (context, index) {
                 var result = filteredCities[index];
                 (String, String, String) cityInfo =
@@ -83,9 +83,9 @@ class _RechercheVilleRouteState extends State<RechercheVilleRoute> {
                           Text(cityName, style: TextStyle(color: Colors.white)),
                           Row(
                             children: <Widget>[
-                              Text(country, style: TextStyle(color: Colors.white70)),
-                              Text(', ', style: TextStyle(color: Colors.white70)),
                               Text(admin, style: TextStyle(color: Colors.white70)),
+                              Text(', ', style: TextStyle(color: Colors.white70)),
+                              Text(country, style: TextStyle(color: Colors.white70)),
                             ],
                           ),
                         ],
