@@ -21,6 +21,10 @@ class DBHelper {
     _db!.insert(tableName, w.toMap());
   }
 
+  static Future<List<VilleDTO>>  findAll() async {
+    final List<Map<String, Object?>> query = await _db!.query(tableName);
+    return query.map((item) => VilleDTO.fromMap(item)).toList();
+  }
 
   static _onCreate(Database db, int version) async {
     await db.execute('CREATE TABLE $tableName (id INTEGER PRIMARY KEY, name TEXT)');
