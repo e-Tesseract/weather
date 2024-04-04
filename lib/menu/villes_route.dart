@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:weather/common/weatherMain.dart';
+import 'package:weather/routes/home_route.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:weather/menu/recherche_ville.dart';
+import 'package:weather/data/DBHelper.dart'; // Import DBHelper
+import 'package:weather/data/ville_dto.dart'; // Import VilleDTO
+
+import '../common/weather_service.dart';
 
 class VillesRoute extends StatefulWidget {
   VillesRoute({Key? key}) : super(key: key);
@@ -10,7 +16,22 @@ class VillesRoute extends StatefulWidget {
 }
 
 class _VillesRouteState extends State<VillesRoute> {
-  final List<String> villes = ['Calais', 'Boulogne', 'Nice'];
+  List<VilleDTO> villes = []; // Liste des villes
+
+  @override
+  void initState() {
+    super.initState();
+    DBHelper.insert(VilleDTO(id: 4, name: 'Lens')); // Ajoutez cette ligne
+    fetchVilles();
+  }
+
+  fetchVilles() async {
+    final db = await DBHelper.initDb();
+    final List<Map<String, dynamic>> maps = await db.query('villes');
+    setState(() {
+      villes = List.generate(maps.length, (i) => VilleDTO.fromMap(maps[i]));
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +49,7 @@ class _VillesRouteState extends State<VillesRoute> {
             readOnly: true,
             decoration: InputDecoration(
               hintText: 'Ajouter des villes...',
-
+              // Couleur du texte
               hintStyle: TextStyle(color: Colors.grey.withOpacity(0.5)),
               prefixIcon: Icon(Icons.search),
               border: OutlineInputBorder(
@@ -43,56 +64,34 @@ class _VillesRouteState extends State<VillesRoute> {
             },
           ),
           Expanded(
-            child: ListView.builder(
-              itemCount: villes.length,
-              itemBuilder: (context, index) {
-                return Dismissible(
-                  key: Key(villes[index]),
-                  direction: DismissDirection.endToStart,
-                  onDismissed: (direction) {
-                    setState(() {
-                      villes.removeAt(index);
-                      _saveCitiesToSharedPreferences();
-                    });
-                  },
-                  background: Container(
-                    alignment: Alignment.centerRight,
-                    padding: EdgeInsets.only(right: 20.0),
-                    color: Colors.red,
-                    child: Icon(Icons.delete, color: Colors.white),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(6.0),
+              child: ListView.builder(
+                itemCount: villes.length,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(6.0), // Ajoute de l'espace autour du bouton
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.blueAccent,
-                        onPrimary: Colors.white70,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        minimumSize: const Size(double.infinity, 80),
+                          primary: Colors.blueAccent,
+                          onPrimary: Colors.white70,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          minimumSize: Size(double.infinity, 80) // taille du bouton
                       ),
                       onPressed: () {
                         SharedPreferences.getInstance().then((sp) {
-                          sp.setString('default_city', villes[index]);
+                          sp.setString('default_city', villes[index].name);
                           Navigator.pop(context);
                         });
                       },
-                      child: Text(villes[index]),
+                      child: Text(villes[index].name),
                     ),
-                  ),
-                );
-              },
-            ),
+                  );
+                },
+              )
           ),
         ],
       ),
     );
-  }
-
-  // Fonction pour enregistrer les villes mises à jour dans SharedPreferences
-  _saveCitiesToSharedPreferences() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setStringList('cities', villes);
   }
 }
