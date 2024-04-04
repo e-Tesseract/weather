@@ -26,24 +26,31 @@ class VillesRoute extends StatelessWidget {
             title: const Text('Gérer les villes', style: TextStyle(color: Colors.white70)),
           ),
           Expanded(
-            child: ListView.builder(
-              itemCount: villes.length,
-              itemBuilder: (context, index) {
-                return ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.blueAccent,
-                    onPrimary: Colors.white70,
-                  ),
-                  onPressed: () {
-                    SharedPreferences.getInstance().then((sp) {
-                      sp.setString('default_city', villes[index]);
-                      Navigator.pop(context);
-                    });
-                  },
-                  child: Text(villes[index]),
-                );
-              },
-            ),
+              child: ListView.builder(
+                itemCount: villes.length,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(6.0), // Ajoute de l'espace autour du bouton
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.blueAccent,
+                        onPrimary: Colors.white70,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        minimumSize: Size(double.infinity, 80) // taille du bouton
+                      ),
+                      onPressed: () {
+                        SharedPreferences.getInstance().then((sp) {
+                          sp.setString('default_city', villes[index]);
+                          Navigator.pop(context);
+                        });
+                      },
+                      child: Text(villes[index]),
+                    ),
+                  );
+                },
+              )
           ),
         ],
       ),

@@ -23,7 +23,7 @@ class _HomeRouteState extends State<HomeRoute> {
 
     DateTime? weatherUpdatedAt = null;
 
-    final int heure = 16;
+    final int heure = 15;
     final int minute = 30;
 
     LinearGradient determineBackgroundColor() {
