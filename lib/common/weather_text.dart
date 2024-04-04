@@ -1,5 +1,4 @@
 // weather_text.dart
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'weather_service.dart';
 
@@ -33,7 +32,7 @@ class WeatherText extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 25.0),
+                    padding: const EdgeInsets.only(left: 25.0),
                     child: Text(
                       '${snapshot.data?['temperature']}°',
                       style: const TextStyle(

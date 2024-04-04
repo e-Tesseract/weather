@@ -46,7 +46,6 @@ class WeatherMain extends StatelessWidget {
                       color: Colors.white,
                     ),
                   ),
-
                 ],
               );
             }

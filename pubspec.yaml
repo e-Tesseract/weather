@@ -30,8 +30,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  sqflite: any
-  path_provider: any
+  sqflite: ^2.0.0+3
+  path_provider: ^2.0.2
   http: ^0.13.3
 
 
