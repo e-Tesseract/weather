@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:weather/common/weatherMain.dart';
-import 'package:weather/routes/home_route.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:weather/menu/recherche_ville.dart';
-import 'package:weather/data/DBHelper.dart'; // Import DBHelper
-import 'package:weather/data/ville_dto.dart'; // Import VilleDTO
-
-import '../common/weather_service.dart';
+import 'package:weather/data/dbhelper.dart';
+import 'package:weather/data/ville_dto.dart';
 
 class VillesRoute extends StatefulWidget {
   VillesRoute({Key? key}) : super(key: key);
@@ -14,12 +10,16 @@ class VillesRoute extends StatefulWidget {
   @override
   _VillesRouteState createState() => _VillesRouteState();
 }
+
 class _VillesRouteState extends State<VillesRoute> {
-  List<VilleDTO> villes = []; // Liste des villes
+  List<VilleDTO> villes = [];
 
   @override
   void initState() {
     super.initState();
+    DBHelper.insert(VilleDTO(id: 3, name: 'Lens'));
+    DBHelper.insert(VilleDTO(id: 4, name: 'Dunkerque'));
+    DBHelper.insert(VilleDTO(id: 5, name: 'Calais'));
     fetchVilles();
   }
 
@@ -61,8 +61,38 @@ class _VillesRouteState extends State<VillesRoute> {
             child: ListView.builder(
               itemCount: villes.length,
               itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(villes[index].name),
+                return Dismissible(
+                  key: Key(villes[index].id.toString()),
+                  direction: DismissDirection.endToStart,
+                  background: Container(
+                    alignment: Alignment.centerRight,
+                    padding: EdgeInsets.only(right: 20.0),
+                    color: Colors.red,
+                    child: Icon(Icons.delete, color: Colors.white),
+                  ),
+                  onDismissed: (direction) async {
+                    await DBHelper.delete(villes[index].id);
+                    setState(() {
+                      villes.removeAt(index);
+                    });
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        SharedPreferences.getInstance().then((sp) {
+                          sp.setString('default_city', villes[index].name);
+                          Navigator.pop(context);
+                        });
+                      },
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.blue,
+                        onPrimary: Colors.white,
+                        minimumSize: Size(double.infinity, 48),
+                      ),
+                      child: Text(villes[index].name),
+                    ),
+                  ),
                 );
               },
             ),

@@ -35,4 +35,8 @@ class DBHelper {
       await db.execute('ALTER TABLE $tableName ADD COLUMN pays string');
     }
   }
+
+  static delete(int id) {
+    _db!.delete(tableName, where: 'id = ?', whereArgs: [id]);
+  }
 }
