@@ -47,11 +47,13 @@ class _VillesRouteState extends State<VillesRoute> {
                 borderRadius: BorderRadius.circular(10.0),
               ),
             ),
-            onTap: () {
-              Navigator.push(
+            onTap: () async {
+              await Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => RechercheVilleRoute()),
               );
+
+              fetchVilles();
             },
           ),
           Expanded(
